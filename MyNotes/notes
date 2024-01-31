@@ -3,6 +3,39 @@ ____________________________________|
 
     ** Notes from the lecture by Mark Reinhold **
 
+    Simple application module tree:
+        src
+         |__ module-info.java
+         |__ com
+              |__ abu
+                  |__ hello
+                        |__ Main.java
+
+    - Java related commands:
+        jshell --> command for interactive java programming in console line (like python!)
+        javap --> shows compiled code. Ex: javap path/to/file.java
 
 
+    - Jar related commands:
+        jar tvf file.jar --> reveals the content of the jar file
+        jar -f lib/hello.jar --describe-module --> describes shortly the module information
 
+    - Compiling, packaging and running steps (with no module, classic way):
+        1) compile  --> javac -d classes path/to/File.java
+        2) package  --> jar --create --file path/to/program.jar -C classes .
+        3) run      --> java --classpath path/to/program.jar file.to.Run.java
+
+    - compiling program using MODULE-PATH:
+        javac -d classes --module-path lib path/to/my/program/Main.java path/to/module-info.java
+
+            (!) each module has to be compiled and packaged separately!
+            (!) After packaging first module, clear the contents of 'classes' directory to compile and package second module
+
+    - Running program.jar using MODULE-PATH:
+        java --module-path lib -m com.abu.hello/com.abu.hello.com.abu.hello.Main
+
+        // there is also option to indicate the main class while packaging process:
+            jar --create --file path/to/program.jar --main-class path.to.main.Class -C classes .
+
+        // and by this way, we don't have to specify Main class when running:
+            java --module-path lib -m com.abu.hello
