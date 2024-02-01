@@ -1,0 +1,11 @@
+The meaning of modules  |
+________________________|
+
+    1) More efficient than classpath
+        - module-path is different than classpath. Modules provide quicker way of searching the required class.
+
+    2) Absence of cycling dependence
+        - it is not possible for two modules to depend on each other
+
+    3) One module can be exposed only to specific set of other modules
+        - by using 'exports to'

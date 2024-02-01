@@ -1,0 +1,20 @@
+module-info.java    |
+____________________|
+
+    The module can only be defined by creating 'module-info.java' file
+
+
+    Keywords:
+
+        1) requires
+                - by using requires, the module is 'importing' other module's classes
+
+        2) exports
+                - it means that module is making itself 'public' to other modules
+
+        3) exports module to other_module
+                - exports itself only to specified modules
+
+        4) requires transitive
+                - suppose hello creates a subclass of some class that is in text module.
+                  Then, when other modules require hello, they will explicitly require text too
